@@ -3,6 +3,7 @@ package br.com.barrsoft.videosrun;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.view.View;
 import android.widget.MediaController;
 import android.widget.VideoView;
 
@@ -21,6 +22,10 @@ public class MovieActivity extends AppCompatActivity {
 
         ButterKnife.bind(this);
 
+        getSupportActionBar().hide();
+        View decorView = getWindow().getDecorView();
+        int visibility = View.SYSTEM_UI_FLAG_FULLSCREEN;
+        decorView.setSystemUiVisibility(visibility);
         videoView.setMediaController(new MediaController(this));
         videoView.setVideoPath("android.resource://" + getOpPackageName() + "/" + R.raw.video);
         videoView.start();
